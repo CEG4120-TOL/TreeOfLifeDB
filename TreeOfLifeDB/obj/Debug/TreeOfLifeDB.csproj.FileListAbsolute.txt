@@ -107,3 +107,4 @@ C:\Users\WFC\Documents\GitHub\TreeOfLifeDB\TreeOfLifeDB\bin\Microsoft.Owin.Secur
 C:\Users\WFC\Documents\GitHub\TreeOfLifeDB\TreeOfLifeDB\obj\Debug\TreeOfLifeDB.csprojResolveAssemblyReference.cache
 C:\Users\WFC\Documents\GitHub\TreeOfLifeDB\TreeOfLifeDB\obj\Debug\TreeOfLifeDB.dll
 C:\Users\WFC\Documents\GitHub\TreeOfLifeDB\TreeOfLifeDB\obj\Debug\TreeOfLifeDB.pdb
+C:\Users\WFC\Documents\GitHub\TreeOfLifeDB\TreeOfLifeDB\bin\TreeOfLifeDB.dll.config

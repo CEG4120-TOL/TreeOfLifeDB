@@ -3,25 +3,50 @@
 }
 
 <div class="jumbotron">
+    <img id="tolLogo" src="/Content/logo-white.png" />
     <h1>Tree of Life DB</h1>
     <p class="lead">Tree of Life DataBase Software</p>
-    <p><a href="http://treeoflifeusa.org/" class="btn btn-primary btn-large">Tree of Life Website &raquo;</a></p>
+    <hr />
+    <h2>Donations</h2>
+    <p>Add new or search existing Donations.</p>
+    <p><a href="~/Donations" class="btn btn-primary btn-large">Go To Donations &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Upload Data</h2>
-        <p> Upload new data from excel spreadsheet.</p>
-        <p><a class="btn btn-default" href="#">Upload Data &raquo;</a></p>
+        <h2>Donors</h2>
+        <p> Add new or search existing Donors.</p>
+        <p><a class="btn btn-primary btn-large" href="~/Donor/Index">Go To Donors &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Add Donations</h2>
-        <p>Manually add donation data.</p>
-        <p><a class="btn btn-default" href="~/Donators">Add Donations &raquo;</a></p>
+        <h2>Causes</h2>
+        <p>Add new or search existing Causes.</p>
+        <p><a class="btn btn-primary btn-large" href="~/Cause/Index">Go To Causes &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>View Data</h2>
-        <p>Look up donation information.</p>
-        <p><a class="btn btn-default" href="#">View Data &raquo;</a></p>
+        <h2>Events</h2>
+        <p>Add new or search existing Events.</p>
+        <p><a class="btn btn-primary btn-large" href="~/Event/Index">Go To Events &raquo;</a></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Import Data</h2>
+        <p> Import speadsheet data.</p>
+        <form>
+            <input type="text" placeholder="path goes here..."/>
+            <input type="submit" class="btn btn-primary btn-large" value="Import &raquo;"/>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <h2>Search</h2>
+        <p>Look up database information.</p>
+        <p><a class="btn btn-primary btn-large" href="~/Search">Go To Search &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Thank You Letter</h2>
+        <p>Manage thank you letters.</p>
+        <p><a class="btn btn-primary btn-large" href="~/Thanks">Go To Letters &raquo;</a></p>
     </div>
 </div>

@@ -40,3 +40,12 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.jumbotron{
+    background-color:#00610B;
+    color:#fff;
+}
+
+#tolLogo{
+    float:right;
+}

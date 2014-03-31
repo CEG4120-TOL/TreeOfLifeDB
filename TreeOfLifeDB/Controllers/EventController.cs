@@ -7,110 +7,111 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TreeOfLifeDB.Models;
+using TreeOfLifeDB.DAL;
 
 namespace TreeOfLifeDB.Controllers
 {
-    public class DonatorsController : Controller
+    public class EventController : Controller
     {
-        private TreeOfLifeDBContext db = new TreeOfLifeDBContext();
+        private TreeOfLifeContext db = new TreeOfLifeContext();
 
-        // GET: /Donators/
+        // GET: /Event/
         public ActionResult Index()
         {
-            return View(db.Donators.ToList());
+            return View(db.Events.ToList());
         }
 
-        // GET: /Donators/Details/5
+        // GET: /Event/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donator donator = db.Donators.Find(id);
-            if (donator == null)
+            Event @event = db.Events.Find(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(donator);
+            return View(@event);
         }
 
-        // GET: /Donators/Create
+        // GET: /Event/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /Donators/Create
+        // POST: /Event/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,FirstName,LastName,Address,Zip,State,Email,Phone,Event,Amount")] Donator donator)
+        public ActionResult Create([Bind(Include="ID,Category,Name,Notes,Total,Date,Location")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                db.Donators.Add(donator);
+                db.Accounts.Add(@event);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(donator);
+            return View(@event);
         }
 
-        // GET: /Donators/Edit/5
+        // GET: /Event/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donator donator = db.Donators.Find(id);
-            if (donator == null)
+            Event @event = db.Events.Find(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(donator);
+            return View(@event);
         }
 
-        // POST: /Donators/Edit/5
+        // POST: /Event/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,FirstName,LastName,Address,Zip,State,Email,Phone,Event,Amount")] Donator donator)
+        public ActionResult Edit([Bind(Include="ID,Category,Name,Notes,Total,Date,Location")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(donator).State = EntityState.Modified;
+                db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(donator);
+            return View(@event);
         }
 
-        // GET: /Donators/Delete/5
+        // GET: /Event/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donator donator = db.Donators.Find(id);
-            if (donator == null)
+            Event @event = db.Events.Find(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(donator);
+            return View(@event);
         }
 
-        // POST: /Donators/Delete/5
+        // POST: /Event/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Donator donator = db.Donators.Find(id);
-            db.Donators.Remove(donator);
+            Event @event = db.Events.Find(id);
+            db.Accounts.Remove(@event);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
