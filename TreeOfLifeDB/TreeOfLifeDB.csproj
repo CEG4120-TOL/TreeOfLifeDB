@@ -160,9 +160,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CauseController.cs" />
+    <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\DonorController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WithdrawelController.cs" />
     <Compile Include="DAL\DBInit.cs" />
     <Compile Include="DAL\TreeOfLifeContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,10 +172,13 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cause.cs" />
+    <Compile Include="Models\Donation.cs" />
     <Compile Include="Models\Donor.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ToLAccount.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\Withdrawel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -229,16 +234,26 @@
     <Content Include="Views\Donor\Details.cshtml" />
     <Content Include="Views\Donor\Edit.cshtml" />
     <Content Include="Views\Donor\Index.cshtml" />
-    <Content Include="Views\Cause\Create.cshtml" />
-    <Content Include="Views\Cause\Delete.cshtml" />
-    <Content Include="Views\Cause\Details.cshtml" />
-    <Content Include="Views\Cause\Edit.cshtml" />
-    <Content Include="Views\Cause\Index.cshtml" />
     <Content Include="Views\Event\Create.cshtml" />
     <Content Include="Views\Event\Delete.cshtml" />
     <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Cause\Create.cshtml" />
+    <Content Include="Views\Cause\Delete.cshtml" />
+    <Content Include="Views\Cause\Details.cshtml" />
+    <Content Include="Views\Cause\Edit.cshtml" />
+    <Content Include="Views\Cause\Index.cshtml" />
+    <Content Include="Views\Withdrawel\Create.cshtml" />
+    <Content Include="Views\Withdrawel\Delete.cshtml" />
+    <Content Include="Views\Withdrawel\Details.cshtml" />
+    <Content Include="Views\Withdrawel\Edit.cshtml" />
+    <Content Include="Views\Withdrawel\Index.cshtml" />
+    <Content Include="Views\Donation\Create.cshtml" />
+    <Content Include="Views\Donation\Delete.cshtml" />
+    <Content Include="Views\Donation\Details.cshtml" />
+    <Content Include="Views\Donation\Edit.cshtml" />
+    <Content Include="Views\Donation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,107 +11,107 @@ using TreeOfLifeDB.DAL;
 
 namespace TreeOfLifeDB.Controllers
 {
-    public class DonorController : Controller
+    public class DonationController : Controller
     {
         private TreeOfLifeContext db = new TreeOfLifeContext();
 
-        // GET: /Donor/
+        // GET: /Donation/
         public ActionResult Index()
         {
-            return View(db.Donors.ToList());
+            return View(db.Donations.ToList());
         }
 
-        // GET: /Donor/Details/5
+        // GET: /Donation/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donor donor = db.Donors.Find(id);
-            if (donor == null)
+            Donation donation = db.Donations.Find(id);
+            if (donation == null)
             {
                 return HttpNotFound();
             }
-            return View(donor);
+            return View(donation);
         }
 
-        // GET: /Donor/Create
+        // GET: /Donation/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /Donor/Create
+        // POST: /Donation/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="TolAccountID,Category,Name,Notes,Balance,Email,Address,Zip,City,State,Phone")] Donor donor)
+        public ActionResult Create([Bind(Include="TransactionID,Amount,Notes,Type,Status,Gross,Fee,Net")] Donation donation)
         {
             if (ModelState.IsValid)
             {
-                db.ToLAccounts.Add(donor);
+                db.Transactions.Add(donation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(donor);
+            return View(donation);
         }
 
-        // GET: /Donor/Edit/5
+        // GET: /Donation/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donor donor = db.Donors.Find(id);
-            if (donor == null)
+            Donation donation = db.Donations.Find(id);
+            if (donation == null)
             {
                 return HttpNotFound();
             }
-            return View(donor);
+            return View(donation);
         }
 
-        // POST: /Donor/Edit/5
+        // POST: /Donation/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="TolAccountID,Category,Name,Notes,Balance,Email,Address,Zip,City,State,Phone")] Donor donor)
+        public ActionResult Edit([Bind(Include="TransactionID,Amount,Notes,Type,Status,Gross,Fee,Net")] Donation donation)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(donor).State = EntityState.Modified;
+                db.Entry(donation).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(donor);
+            return View(donation);
         }
 
-        // GET: /Donor/Delete/5
+        // GET: /Donation/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donor donor = db.Donors.Find(id);
-            if (donor == null)
+            Donation donation = db.Donations.Find(id);
+            if (donation == null)
             {
                 return HttpNotFound();
             }
-            return View(donor);
+            return View(donation);
         }
 
-        // POST: /Donor/Delete/5
+        // POST: /Donation/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Donor donor = db.Donors.Find(id);
-            db.ToLAccounts.Remove(donor);
+            Donation donation = db.Donations.Find(id);
+            db.Transactions.Remove(donation);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

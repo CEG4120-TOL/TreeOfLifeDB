@@ -5,9 +5,8 @@ using System.Web;
 
 namespace TreeOfLifeDB.Models
 {
-    public class Cause : ToLAccount
+    public class Withdrawel : Transaction
     {
-        public string Description { get; set; }
-        public decimal Goal { get; set; }
+        public ICollection<Cause> Causes { get; set; }
     }
 }

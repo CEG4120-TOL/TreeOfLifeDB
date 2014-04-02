@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Notes)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Total)
+            @Html.DisplayNameFor(model => model.Balance)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -56,7 +56,7 @@
             @Html.DisplayFor(modelItem => item.Notes)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Total)
+            @Html.DisplayFor(modelItem => item.Balance)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
@@ -77,9 +77,9 @@
             @Html.DisplayFor(modelItem => item.Phone)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.TolAccountID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TolAccountID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TolAccountID })
         </td>
     </tr>
 }

@@ -47,11 +47,11 @@ namespace TreeOfLifeDB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,Category,Name,Notes,Total,Description,Balance,Goal")] Cause cause)
+        public ActionResult Create([Bind(Include="TolAccountID,Category,Name,Notes,Balance,Description,Goal")] Cause cause)
         {
             if (ModelState.IsValid)
             {
-                db.Accounts.Add(cause);
+                db.ToLAccounts.Add(cause);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -79,7 +79,7 @@ namespace TreeOfLifeDB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,Category,Name,Notes,Total,Description,Balance,Goal")] Cause cause)
+        public ActionResult Edit([Bind(Include="TolAccountID,Category,Name,Notes,Balance,Description,Goal")] Cause cause)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +111,7 @@ namespace TreeOfLifeDB.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Cause cause = db.Causes.Find(id);
-            db.Accounts.Remove(cause);
+            db.ToLAccounts.Remove(cause);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
