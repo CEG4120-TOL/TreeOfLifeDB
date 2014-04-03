@@ -244,16 +244,16 @@
     <Content Include="Views\Cause\Details.cshtml" />
     <Content Include="Views\Cause\Edit.cshtml" />
     <Content Include="Views\Cause\Index.cshtml" />
-    <Content Include="Views\Withdrawel\Create.cshtml" />
-    <Content Include="Views\Withdrawel\Delete.cshtml" />
-    <Content Include="Views\Withdrawel\Details.cshtml" />
-    <Content Include="Views\Withdrawel\Edit.cshtml" />
-    <Content Include="Views\Withdrawel\Index.cshtml" />
     <Content Include="Views\Donation\Create.cshtml" />
     <Content Include="Views\Donation\Delete.cshtml" />
     <Content Include="Views\Donation\Details.cshtml" />
     <Content Include="Views\Donation\Edit.cshtml" />
     <Content Include="Views\Donation\Index.cshtml" />
+    <Content Include="Views\Withdrawel\Create.cshtml" />
+    <Content Include="Views\Withdrawel\Delete.cshtml" />
+    <Content Include="Views\Withdrawel\Details.cshtml" />
+    <Content Include="Views\Withdrawel\Edit.cshtml" />
+    <Content Include="Views\Withdrawel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

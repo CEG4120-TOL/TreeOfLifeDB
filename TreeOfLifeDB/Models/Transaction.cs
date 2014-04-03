@@ -8,7 +8,7 @@ namespace TreeOfLifeDB.Models
     public abstract class Transaction
     {
         public int TransactionID { get; set; }
-        public DateTime Date = DateTime.Now;
+        public DateTime Date { get; set; }
         public decimal Amount { get; set; }
         public string Notes { get; set; }
     }

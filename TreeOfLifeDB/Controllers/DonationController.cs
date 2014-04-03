@@ -47,7 +47,7 @@ namespace TreeOfLifeDB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="TransactionID,Amount,Notes,Type,Status,Gross,Fee,Net")] Donation donation)
+        public ActionResult Create([Bind(Include="TransactionID,Date,Amount,Notes,TaxDeductable")] Donation donation)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace TreeOfLifeDB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="TransactionID,Amount,Notes,Type,Status,Gross,Fee,Net")] Donation donation)
+        public ActionResult Edit([Bind(Include="TransactionID,Date,Amount,Notes,TaxDeductable")] Donation donation)
         {
             if (ModelState.IsValid)
             {

@@ -12,17 +12,8 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Donors)
+            @Html.DisplayNameFor(model => model.Date)
         </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Causes)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Events)
-        </th>
-
         <th>
             @Html.DisplayNameFor(model => model.Amount)
         </th>
@@ -30,19 +21,7 @@
             @Html.DisplayNameFor(model => model.Notes)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gross)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Net)
+            @Html.DisplayNameFor(model => model.TaxDeductable)
         </th>
         <th></th>
     </tr>
@@ -50,15 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayNameFor(model => model.Donors)
-        </td>
-
-        <td>
-            @Html.DisplayNameFor(model => model.Causes)
-        </td>
-
-        <td>
-            @Html.DisplayNameFor(model => model.Events)
+            @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Amount)
@@ -67,19 +38,7 @@
             @Html.DisplayFor(modelItem => item.Notes)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gross)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fee)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Net)
+            @Html.DisplayFor(modelItem => item.TaxDeductable)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |
