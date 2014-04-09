@@ -36,6 +36,54 @@ namespace TreeOfLifeDB.Controllers
             return View(donation);
         }
 
+
+        public ActionResult SelectDonor(string searchString, string dropString)
+        {
+            var AccountLst = new List<string>();
+
+            var AccountQry = from d in db.Donors
+                             orderby d.Name
+                             select d.Name;
+
+            AccountLst.AddRange(AccountQry.Distinct());
+            ViewBag.dropString = new SelectList(AccountLst);
+
+            var donors = from d in db.Donors
+                         select d;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                donors = donors.Where(s => s.Name.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(dropString))
+            {
+                donors = donors.Where(x => x.Name == dropString);
+            }
+
+            //make this like others searches...
+            return View();
+
+        }
+
+        // POST: /Donatio/SelectDonor
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /*[HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SelectDonor([Bind(Include = "ToLAccountID")] Donor donor)
+        {
+            if (ModelState.IsValid)
+            {
+                //return the donor
+                return RedirectToAction("Create");
+            }
+
+            return View(donor);
+        }*/
+
+
+
         // GET: /Donation/Create
         public ActionResult Create()
         {

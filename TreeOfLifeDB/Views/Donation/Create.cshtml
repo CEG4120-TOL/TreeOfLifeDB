@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create Donation</h2>
 
 
 @using (Html.BeginForm()) 
@@ -15,6 +15,30 @@
         <h4>Donation</h4>
         <hr />
         @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Donors, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <p><a href="~/Donation/SelectDonor" class="btn btn-primary btn-large">Add Donor &raquo;</a></p>
+                @Html.ValidationMessageFor(model => model.Donors)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Causes, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Causes)
+                @Html.ValidationMessageFor(model => model.Causes)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Events, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Events)
+                @Html.ValidationMessageFor(model => model.Events)
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-2" })

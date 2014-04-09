@@ -1,10 +1,20 @@
 ﻿@model IEnumerable<TreeOfLifeDB.Models.Donor>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Donors";
 }
 
 <h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search Donors: @Html.TextBox("SearchString")
+        <input class="btn-primary" type="submit" value="Search" />
+    </p>
+}
+
+ 
 
 <p>
     @Html.ActionLink("Create New", "Create")

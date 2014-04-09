@@ -1,0 +1,27 @@
+﻿@model TreeOfLifeDB.Models.Donor
+
+@{
+    ViewBag.Title = "SelectDonor";
+}
+
+<h2>SelectDonor</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Donors</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DropDownList("dropString", "Search Results...")
+                @Html.TextBox("searchString")
+                <input type="submit" value="Search" />
+            </div>
+        </div>
+    </div>
+}
+

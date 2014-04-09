@@ -11,7 +11,7 @@ namespace TreeOfLifeDB.DAL
 
         protected override void Seed(TreeOfLifeContext context)
         {
-
+            //add dummy data here with a loop...
         }
     }
 }

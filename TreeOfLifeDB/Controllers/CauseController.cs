@@ -16,9 +16,16 @@ namespace TreeOfLifeDB.Controllers
         private TreeOfLifeContext db = new TreeOfLifeContext();
 
         // GET: /Cause/
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Causes.ToList());
+            var causes = from c in db.Causes
+                         select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                causes = causes.Where(s => s.Name.Contains(searchString) || s.Category.Contains(searchString));
+            }
+            return View(causes);
         }
 
         // GET: /Cause/Details/5
