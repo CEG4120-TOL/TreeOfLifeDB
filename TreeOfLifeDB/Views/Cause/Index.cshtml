@@ -4,15 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Causes</h2>
+<h2>Index</h2>
 
 @using (Html.BeginForm())
 {
     <p>
-        Search Causes: @Html.TextBox("SearchString")&nbsp;
+        Search Causes: @Html.TextBox("SearchString")
         <input class="btn-primary" type="submit" value="Search" />
     </p>
 }
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

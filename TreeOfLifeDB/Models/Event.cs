@@ -12,7 +12,7 @@ namespace TreeOfLifeDB.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
-
+        public virtual ICollection<Donation> donations { get; set; }
         public string Location { get; set; }
     }
 }

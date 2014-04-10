@@ -234,16 +234,16 @@
     <Content Include="Views\Donor\Details.cshtml" />
     <Content Include="Views\Donor\Edit.cshtml" />
     <Content Include="Views\Donor\Index.cshtml" />
-    <Content Include="Views\Event\Create.cshtml" />
-    <Content Include="Views\Event\Delete.cshtml" />
-    <Content Include="Views\Event\Details.cshtml" />
-    <Content Include="Views\Event\Edit.cshtml" />
-    <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Cause\Create.cshtml" />
     <Content Include="Views\Cause\Delete.cshtml" />
     <Content Include="Views\Cause\Details.cshtml" />
     <Content Include="Views\Cause\Edit.cshtml" />
     <Content Include="Views\Cause\Index.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Delete.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Donation\Create.cshtml" />
     <Content Include="Views\Donation\Delete.cshtml" />
     <Content Include="Views\Donation\Details.cshtml" />
@@ -254,7 +254,6 @@
     <Content Include="Views\Withdrawel\Details.cshtml" />
     <Content Include="Views\Withdrawel\Edit.cshtml" />
     <Content Include="Views\Withdrawel\Index.cshtml" />
-    <Content Include="Views\Donation\SelectDonor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

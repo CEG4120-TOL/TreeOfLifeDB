@@ -18,12 +18,12 @@ namespace TreeOfLifeDB.Controllers
         // GET: /Event/
         public ActionResult Index(string searchString)
         {
-            var events = from e in db.Events
-                         select e;
+            var events = from d in db.Events
+                         select d;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                events = events.Where(s => s.Name.Contains(searchString) || s.Category.Contains(searchString));
+                events = events.Where(s => s.Name.Contains(searchString));
             }
             return View(events);
         }

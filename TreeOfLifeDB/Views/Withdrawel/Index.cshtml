@@ -6,6 +6,15 @@
 
 <h2>Index</h2>
 
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search Withdrawels: @Html.TextBox("SearchString")
+        <input class="btn-primary" type="submit" value="Search" />
+    </p>
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

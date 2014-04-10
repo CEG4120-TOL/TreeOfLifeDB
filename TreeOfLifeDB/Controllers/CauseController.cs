@@ -18,14 +18,14 @@ namespace TreeOfLifeDB.Controllers
         // GET: /Cause/
         public ActionResult Index(string searchString)
         {
-            var causes = from c in db.Causes
-                         select c;
+            var cause = from d in db.Causes
+                         select d;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                causes = causes.Where(s => s.Name.Contains(searchString) || s.Category.Contains(searchString));
+                cause = cause.Where(s => s.Name.Contains(searchString));
             }
-            return View(causes);
+            return View(cause);
         }
 
         // GET: /Cause/Details/5

@@ -16,9 +16,16 @@ namespace TreeOfLifeDB.Controllers
         private TreeOfLifeContext db = new TreeOfLifeContext();
 
         // GET: /Withdrawel/
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Withdrawels.ToList());
+            var withdrawel = from d in db.Withdrawels
+                         select d;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                withdrawel = withdrawel.Where(s => s.cause.Name.Contains(searchString));
+            }
+            return View(withdrawel);
         }
 
         // GET: /Withdrawel/Details/5

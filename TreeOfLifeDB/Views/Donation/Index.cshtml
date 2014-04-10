@@ -6,20 +6,20 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm())
+{
+    <p>
+        Search Donations: @Html.TextBox("SearchString")
+        <input class="btn-primary" type="submit" value="Search" />
+    </p>
+}
+
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Donors)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Causes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Events)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.Notes)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TaxDeductable)
+            @Html.DisplayNameFor(model => model.TaxDeductableAmount)
         </th>
         <th></th>
     </tr>
@@ -47,7 +47,7 @@
             @Html.DisplayFor(modelItem => item.Notes)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TaxDeductable)
+            @Html.DisplayFor(modelItem => item.TaxDeductableAmount)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |

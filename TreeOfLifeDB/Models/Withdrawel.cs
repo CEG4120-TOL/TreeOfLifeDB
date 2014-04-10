@@ -7,6 +7,6 @@ namespace TreeOfLifeDB.Models
 {
     public class Withdrawel : Transaction
     {
-        public ICollection<Cause> Causes { get; set; }
+        public virtual Cause cause { get; set; }
     }
 }
