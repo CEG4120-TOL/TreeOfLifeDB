@@ -11,7 +11,6 @@ namespace TreeOfLifeDB.Models
     {
         public int TolAccountID { get; set; }
         public string Category { get; set; }
-        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
         public string Name { get; set; }
         public string Notes { get; set; }
         [Column(TypeName = "money")]

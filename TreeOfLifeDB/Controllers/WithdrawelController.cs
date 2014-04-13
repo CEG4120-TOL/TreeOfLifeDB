@@ -16,16 +16,9 @@ namespace TreeOfLifeDB.Controllers
         private TreeOfLifeContext db = new TreeOfLifeContext();
 
         // GET: /Withdrawel/
-        public ActionResult Index(string searchString)
+        public ActionResult Index()
         {
-            var withdrawel = from d in db.Withdrawels
-                         select d;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                withdrawel = withdrawel.Where(s => s.cause.Name.Contains(searchString));
-            }
-            return View(withdrawel);
+            return View(db.Withdrawels.ToList());
         }
 
         // GET: /Withdrawel/Details/5
@@ -54,7 +47,7 @@ namespace TreeOfLifeDB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="TransactionID,Date,Amount,Notes")] Withdrawel withdrawel)
+        public ActionResult Create([Bind(Include="TransactionID,Date,Amount,Notes,causeID")] Withdrawel withdrawel)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +79,7 @@ namespace TreeOfLifeDB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="TransactionID,Date,Amount,Notes")] Withdrawel withdrawel)
+        public ActionResult Edit([Bind(Include="TransactionID,Date,Amount,Notes,causeID")] Withdrawel withdrawel)
         {
             if (ModelState.IsValid)
             {

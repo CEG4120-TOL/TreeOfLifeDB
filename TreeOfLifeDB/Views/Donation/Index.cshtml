@@ -1,23 +1,23 @@
 ﻿@model IEnumerable<TreeOfLifeDB.Models.Donation>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Donations";
 }
 
-<h2>Index</h2>
-
-@using (Html.BeginForm())
-{
-    <p>
-        Search Donations: @Html.TextBox("SearchString")
-        <input class="btn-primary" type="submit" value="Search" />
-    </p>
-}
-
+<h2>Donations</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Select Department: @Html.DropDownList("SelectedDonor", "All")
+        <input type="submit" value="Filter" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -28,6 +28,18 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.donationDonor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.donorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.causeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eventID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TaxDeductableAmount)
@@ -45,6 +57,18 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.donationDonor.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.donorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.donationCause)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.donationEvent)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TaxDeductableAmount)

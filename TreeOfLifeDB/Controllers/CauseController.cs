@@ -23,7 +23,8 @@ namespace TreeOfLifeDB.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                cause = cause.Where(s => s.Name.Contains(searchString));
+                cause = cause.Where(s => s.Name.Contains(searchString)
+                    || s.Category.Contains(searchString));
             }
             return View(cause);
         }

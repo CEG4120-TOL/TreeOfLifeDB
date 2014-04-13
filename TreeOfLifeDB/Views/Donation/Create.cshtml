@@ -41,6 +41,30 @@
         </div>
 
         <div class="form-group">
+            <label class="control-label col-md-2" for="DonorID">Donor</label>
+            <div class="col-md-10">
+                @Html.DropDownList("DonorID", "Select A Donor...")
+                @Html.ValidationMessageFor(model => model.donorID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="CauseID">Cause</label>
+            <div class="col-md-10">
+                @Html.DropDownList("CauseID", "Select A Cause...")
+                @Html.ValidationMessageFor(model => model.causeID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="EventID">Event</label>
+            <div class="col-md-10">
+                @Html.DropDownList("EventID", "Select An Event...")
+                @Html.ValidationMessageFor(model => model.eventID)
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.TaxDeductableAmount, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TaxDeductableAmount)

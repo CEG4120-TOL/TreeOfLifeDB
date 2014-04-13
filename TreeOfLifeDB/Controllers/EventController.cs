@@ -23,7 +23,9 @@ namespace TreeOfLifeDB.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                events = events.Where(s => s.Name.Contains(searchString));
+                events = events.Where(s => s.Name.Contains(searchString)
+                    || s.Location.Contains(searchString)
+                    || s.Category.Contains(searchString));
             }
             return View(events);
         }

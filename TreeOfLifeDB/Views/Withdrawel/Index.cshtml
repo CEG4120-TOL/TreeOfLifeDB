@@ -6,15 +6,6 @@
 
 <h2>Index</h2>
 
-
-@using (Html.BeginForm())
-{
-    <p>
-        Search Withdrawels: @Html.TextBox("SearchString")
-        <input class="btn-primary" type="submit" value="Search" />
-    </p>
-}
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -29,6 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Notes)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.causeID)
+        </th>
         <th></th>
     </tr>
 
@@ -42,6 +36,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.causeID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |

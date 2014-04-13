@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TreeOfLifeDB.Models;
 using TreeOfLifeDB.DAL;
+using System.Data.Entity.Infrastructure;
 
 namespace TreeOfLifeDB.Controllers
 {
@@ -16,16 +17,21 @@ namespace TreeOfLifeDB.Controllers
         private TreeOfLifeContext db = new TreeOfLifeContext();
 
         // GET: /Donation/
-        public ActionResult Index(string searchString)
+        public ActionResult Index(int? SelectedDonor)
         {
-            var donation = from d in db.Donations
-                             select d;
+            var donors = db.Donors.OrderBy(q => q.Name).ToList();
+            
+            ViewBag.SelectedDonor = new SelectList(donors, "TolAccountID", "Name", SelectedDonor);
+            int donorTOLID = SelectedDonor.GetValueOrDefault();
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                donation = donation.Where(s => s.donationCause.Name.Contains(searchString));
-            }
-            return View(donation);
+            IQueryable<Donation> donations = db.Donations
+                .Where(c => !SelectedDonor.HasValue || c.donorID == donorTOLID)
+                .OrderBy(d => d.TransactionID)
+                .Include(d => d.donationDonor);
+
+            var sql = donations.ToString();
+
+            return View(donations.ToList());
         }
 
         // GET: /Donation/Details/5
@@ -46,6 +52,9 @@ namespace TreeOfLifeDB.Controllers
         // GET: /Donation/Create
         public ActionResult Create()
         {
+            PopulateDonorList();
+            PopulateCauseList();
+            PopulateEventList();
             return View();
         }
 
@@ -54,15 +63,25 @@ namespace TreeOfLifeDB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="TransactionID,Date,Amount,Notes,TaxDeductableAmount")] Donation donation)
+        public ActionResult Create([Bind(Include = "TransactionID,Date,Amount,Notes,donorID,causeID,eventID,TaxDeductableAmount")] Donation donation)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Transactions.Add(donation);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Transactions.Add(donation);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
+            catch (RetryLimitExceededException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.)
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            PopulateDonorList(donation.donorID);
+            PopulateCauseList(donation.causeID);
+            PopulateEventList(donation.eventID);
             return View(donation);
         }
 
@@ -78,6 +97,9 @@ namespace TreeOfLifeDB.Controllers
             {
                 return HttpNotFound();
             }
+            PopulateDonorList(donation.donorID);
+            PopulateCauseList(donation.causeID);
+            PopulateEventList(donation.eventID);
             return View(donation);
         }
 
@@ -86,15 +108,51 @@ namespace TreeOfLifeDB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="TransactionID,Date,Amount,Notes,TaxDeductableAmount")] Donation donation)
+        public ActionResult Edit([Bind(Include="TransactionID,Date,Amount,Notes,donorID,causeID,eventID,TaxDeductableAmount")] Donation donation)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(donation).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(donation).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (RetryLimitExceededException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.)
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            PopulateDonorList(donation.donorID);
+            PopulateCauseList(donation.causeID);
+            PopulateEventList(donation.eventID);
             return View(donation);
+        }
+
+        private void PopulateDonorList(object selectedDonor = null)
+        {
+            var donorQuery = from d in db.Donors
+                             orderby d.Name
+                             select d;
+            ViewBag.DonorID = new SelectList(donorQuery, "TolAccountID", "Name", selectedDonor);
+
+        }
+
+        private void PopulateCauseList(object selectedCause = null)
+        {
+            var causeQuery = from d in db.Causes
+                             orderby d.Name
+                             select d;
+            ViewBag.CauseID = new SelectList(causeQuery, "TolAccountID", "Name", selectedCause);
+        }
+
+        private void PopulateEventList(object selectedEvent = null)
+        {
+            var eventQuery = from d in db.Events
+                             orderby d.Name
+                             select d;
+            ViewBag.EventID = new SelectList(eventQuery, "TolAccountID", "Name", selectedEvent);
         }
 
         // GET: /Donation/Delete/5
