@@ -36,9 +36,18 @@ namespace TreeOfLifeDB.Controllers
             return View(withdrawel);
         }
 
+        private void PopulateCauseList(object selectedCause = null)
+        {
+            var causeQuery = from d in db.Causes
+                             orderby d.Name
+                             select d;
+            ViewBag.CauseID = new SelectList(causeQuery, "TolAccountID", "Name", selectedCause);
+        }
+
         // GET: /Withdrawel/Create
         public ActionResult Create()
         {
+            PopulateCauseList();
             return View();
         }
 
@@ -51,6 +60,11 @@ namespace TreeOfLifeDB.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                var causeName = (from g in db.Causes where g.TolAccountID == withdrawel.causeID select g).First();
+                withdrawel.cause = causeName;
+                causeName.Balance -= withdrawel.Amount;
+
                 db.Transactions.Add(withdrawel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -111,6 +125,11 @@ namespace TreeOfLifeDB.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Withdrawel withdrawel = db.Withdrawels.Find(id);
+
+            var causeName = (from g in db.Causes where g.TolAccountID == withdrawel.causeID select g).First();
+            withdrawel.cause = causeName;
+            causeName.Balance += withdrawel.Amount;
+            
             db.Transactions.Remove(withdrawel);
             db.SaveChanges();
             return RedirectToAction("Index");

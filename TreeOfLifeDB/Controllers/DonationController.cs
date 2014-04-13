@@ -69,6 +69,21 @@ namespace TreeOfLifeDB.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    //set the foreign keys to populate table information
+                    var donorName = (from g in db.Donors where g.TolAccountID == donation.donorID select g).First();
+                    donation.donationDonor = donorName;
+                    donorName.Balance += donation.Amount;
+                    var causeName = (from g in db.Causes where g.TolAccountID == donation.causeID select g).First();
+                    donation.donationCause = causeName;
+                    causeName.Balance += donation.Amount;
+                    var eventName = (from g in db.Events where g.TolAccountID == donation.eventID select g).First();
+                    donation.donationEvent = eventName;
+                    if (donation.donationEvent != null)
+                    {
+                        eventName.Balance += donation.Amount;
+                    }
+                    
+
                     db.Transactions.Add(donation);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -100,6 +115,7 @@ namespace TreeOfLifeDB.Controllers
             PopulateDonorList(donation.donorID);
             PopulateCauseList(donation.causeID);
             PopulateEventList(donation.eventID);
+            
             return View(donation);
         }
 
@@ -113,7 +129,7 @@ namespace TreeOfLifeDB.Controllers
             try
             {
                 if (ModelState.IsValid)
-                {
+                {        
                     db.Entry(donation).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -136,7 +152,6 @@ namespace TreeOfLifeDB.Controllers
                              orderby d.Name
                              select d;
             ViewBag.DonorID = new SelectList(donorQuery, "TolAccountID", "Name", selectedDonor);
-
         }
 
         private void PopulateCauseList(object selectedCause = null)
@@ -176,6 +191,22 @@ namespace TreeOfLifeDB.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Donation donation = db.Donations.Find(id);
+
+            //set the foreign keys to populate table information
+            var donorName = (from g in db.Donors where g.TolAccountID == donation.donorID select g).First();
+            donation.donationDonor = donorName;
+            donorName.Balance -= donation.Amount;
+            var causeName = (from g in db.Causes where g.TolAccountID == donation.causeID select g).First();
+            donation.donationCause = causeName;
+            causeName.Balance -= donation.Amount;
+            var eventName = (from g in db.Events where g.TolAccountID == donation.eventID select g).First();
+            donation.donationEvent = eventName;
+            if (donation.donationEvent != null)
+            {
+                eventName.Balance -= donation.Amount;
+            }
+            
+
             db.Transactions.Remove(donation);
             db.SaveChanges();
             return RedirectToAction("Index");

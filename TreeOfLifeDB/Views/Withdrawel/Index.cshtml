@@ -20,6 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Notes)
         </th>
+        <td>
+            @Html.DisplayNameFor(model => model.cause)
+        </td>
         <th>
             @Html.DisplayNameFor(model => model.causeID)
         </th>
@@ -38,10 +41,13 @@
             @Html.DisplayFor(modelItem => item.Notes)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.cause.Name)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.causeID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |
+            <!--@Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |-->
             @Html.ActionLink("Details", "Details", new { id=item.TransactionID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.TransactionID })
         </td>

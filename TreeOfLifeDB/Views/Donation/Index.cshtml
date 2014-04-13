@@ -30,16 +30,16 @@
             @Html.DisplayNameFor(model => model.Notes)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.donationDonor)
+            @Html.DisplayNameFor(model => model.donationDonor.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.donorID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.causeID)
+            @Html.DisplayNameFor(model => model.donationCause.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.eventID)
+            @Html.DisplayNameFor(model => model.donationEvent.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TaxDeductableAmount)
@@ -65,16 +65,16 @@
             @Html.DisplayFor(modelItem => item.donorID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.donationCause)
+            @Html.DisplayFor(modelItem => item.donationCause.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.donationEvent)
+            @Html.DisplayFor(modelItem => item.donationEvent.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TaxDeductableAmount)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |
+            <!--@Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |-->
             @Html.ActionLink("Details", "Details", new { id=item.TransactionID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.TransactionID })
         </td>

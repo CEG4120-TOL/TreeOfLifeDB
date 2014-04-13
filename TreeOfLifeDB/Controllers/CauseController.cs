@@ -59,6 +59,7 @@ namespace TreeOfLifeDB.Controllers
         {
             if (ModelState.IsValid)
             {
+                cause.Balance = 0;
                 db.ToLAccounts.Add(cause);
                 db.SaveChanges();
                 return RedirectToAction("Index");
