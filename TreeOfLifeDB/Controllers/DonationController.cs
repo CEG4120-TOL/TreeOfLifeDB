@@ -17,21 +17,18 @@ namespace TreeOfLifeDB.Controllers
         private TreeOfLifeContext db = new TreeOfLifeContext();
 
         // GET: /Donation/
-        public ActionResult Index(int? SelectedDonor)
+        public ActionResult Index(string searchString)
         {
-            var donors = db.Donors.OrderBy(q => q.Name).ToList();
-            
-            ViewBag.SelectedDonor = new SelectList(donors, "TolAccountID", "Name", SelectedDonor);
-            int donorTOLID = SelectedDonor.GetValueOrDefault();
+            var donations = from d in db.Donations
+                         select d;
 
-            IQueryable<Donation> donations = db.Donations
-                .Where(c => !SelectedDonor.HasValue || c.donorID == donorTOLID)
-                .OrderBy(d => d.TransactionID)
-                .Include(d => d.donationDonor);
-
-            var sql = donations.ToString();
-
-            return View(donations.ToList());
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                donations = donations.Where(s => s.donationDonor.Name.Contains(searchString)
+                    || s.donationCause.Name.Contains(searchString)
+                    || s.donationEvent.Name.Contains(searchString));
+            }
+            return View(donations);
         }
 
         // GET: /Donation/Details/5
@@ -151,7 +148,8 @@ namespace TreeOfLifeDB.Controllers
             var donorQuery = from d in db.Donors
                              orderby d.Name
                              select d;
-            ViewBag.DonorID = new SelectList(donorQuery, "TolAccountID", "Name", selectedDonor);
+
+            ViewBag.DonorID = new SelectList(donorQuery, "TolAccountID", "DropDownInfo", selectedDonor);
         }
 
         private void PopulateCauseList(object selectedCause = null)
@@ -159,7 +157,7 @@ namespace TreeOfLifeDB.Controllers
             var causeQuery = from d in db.Causes
                              orderby d.Name
                              select d;
-            ViewBag.CauseID = new SelectList(causeQuery, "TolAccountID", "Name", selectedCause);
+            ViewBag.CauseID = new SelectList(causeQuery, "TolAccountID", "DropDownInfo", selectedCause);
         }
 
         private void PopulateEventList(object selectedEvent = null)
@@ -167,7 +165,7 @@ namespace TreeOfLifeDB.Controllers
             var eventQuery = from d in db.Events
                              orderby d.Name
                              select d;
-            ViewBag.EventID = new SelectList(eventQuery, "TolAccountID", "Name", selectedEvent);
+            ViewBag.EventID = new SelectList(eventQuery, "TolAccountID", "DropDownInfo", selectedEvent);
         }
 
         // GET: /Donation/Delete/5

@@ -15,5 +15,13 @@ namespace TreeOfLifeDB.Models
         public string Notes { get; set; }
         [Column(TypeName = "money")]
         public decimal Balance { get; set; }
+
+        public string DropDownInfo
+        {
+            get
+            {
+                return Name +", ID: " + TolAccountID;
+            }
+        }
     }
 }

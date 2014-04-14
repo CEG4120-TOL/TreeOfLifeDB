@@ -10,9 +10,9 @@ namespace TreeOfLifeDB.Models
     public abstract class Transaction
     {
         public int TransactionID { get; set; }
-        [Display(Name = "Transaction Date")]
+        [Display(Name = "Date (MM/dd/yyyy)")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
         [Column(TypeName = "money")]
         public decimal Amount { get; set; }

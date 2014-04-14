@@ -19,14 +19,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Notes)
         </dt>
 
@@ -35,7 +27,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.donorID)
+            Donor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donationDonor.Name)
+        </dd>
+
+        <dt>
+            Donor ID
         </dt>
 
         <dd>
@@ -43,7 +43,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.causeID)
+            Cause
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donationCause.Name)
+        </dd>
+
+        <dt>
+            Cause ID
         </dt>
 
         <dd>
@@ -51,11 +59,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.eventID)
+            Event
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donationEvent.Name)
+        </dd>
+
+        <dt>
+            Event ID
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.eventID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
         </dd>
 
         <dt>

@@ -7,39 +7,36 @@
 <h2>Donations</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Donation", "Create")
 </p>
 
 @using (Html.BeginForm())
 {
     <p>
-        Select Department: @Html.DropDownList("SelectedDonor", "All")
-        <input type="submit" value="Filter" />
+        Search Donations: @Html.TextBox("SearchString")
+        <input class="btn-primary" type="submit" value="Search" />
     </p>
 }
 
 <table class="table">
-    <tr>
+    <tr>      
+        <th>
+            Donor
+        </th>
+        <th>
+            Donor ID
+        </th>
+        <th>
+            Cause
+        </th>
+        <th>
+            Event
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Amount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.donationDonor.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.donorID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.donationCause.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.donationEvent.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TaxDeductableAmount)
@@ -49,15 +46,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.donationDonor.Name)
         </td>
@@ -71,7 +59,13 @@
             @Html.DisplayFor(modelItem => item.donationEvent.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TaxDeductableAmount)
+            @Html.DisplayFor(modelItem => item.Date, "{0:MM/dd/yyyy}")
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.TaxDeductableAmount)
         </td>
         <td>
             <!--@Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |-->

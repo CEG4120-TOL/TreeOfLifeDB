@@ -6,6 +6,18 @@
 
 <h2>Create</h2>
 
+<div class="row">
+    <div class="col-md-2">
+        <p><a class="btn btn-primary btn-large" href="~/Donor/Create">New Donor &raquo;</a></p>
+    </div>
+    <div class="col-md-2">
+        <p><a class="btn btn-primary btn-large" href="~/Cause/Create">New Cause &raquo;</a></p>
+    </div>
+    <div class="col-md-2">
+        <p><a class="btn btn-primary btn-large" href="~/Event/Create">New Event &raquo;</a></p>
+    </div>
+</div>
+
 
 @using (Html.BeginForm()) 
 {
@@ -24,21 +36,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Amount, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Amount)
-                @Html.ValidationMessageFor(model => model.Amount)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Notes)
-                @Html.ValidationMessageFor(model => model.Notes)
-            </div>
-        </div>
 
         <div class="form-group">
             <label class="control-label col-md-2" for="DonorID">Donor</label>
@@ -65,10 +62,26 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Amount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Amount)
+                @Html.ValidationMessageFor(model => model.Amount)
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.TaxDeductableAmount, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TaxDeductableAmount)
                 @Html.ValidationMessageFor(model => model.TaxDeductableAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Notes)
+                @Html.ValidationMessageFor(model => model.Notes)
             </div>
         </div>
 

@@ -6,6 +6,12 @@
 
 <h2>Index</h2>
 
+<div class="row">
+    <div class="col-md-2">
+        <p><a class="btn btn-primary btn-large" href="~/Donation/Create">New Donation &raquo;</a></p>
+    </div>
+</div>
+
 @using (Html.BeginForm())
 {
     <p>
@@ -16,7 +22,7 @@
 
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Event", "Create")
 </p>
 <table class="table">
     <tr>
@@ -27,7 +33,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Notes)
+            ID
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Balance)
@@ -37,6 +43,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            Total Donations
         </th>
         <th></th>
     </tr>
@@ -50,16 +59,19 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Notes)
+            @Html.DisplayFor(modelItem => item.TolAccountID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Balance)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Date)
+            @Html.DisplayFor(modelItem => item.Date, "{0:MM/dd/yyyy}")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.donations.Count)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TolAccountID }) |
