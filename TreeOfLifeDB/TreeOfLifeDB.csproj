@@ -254,6 +254,7 @@
     <Content Include="Views\Withdrawel\Details.cshtml" />
     <Content Include="Views\Withdrawel\Edit.cshtml" />
     <Content Include="Views\Withdrawel\Index.cshtml" />
+    <Content Include="Views\Home\Backup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

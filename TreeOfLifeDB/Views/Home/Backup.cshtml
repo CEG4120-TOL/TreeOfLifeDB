@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Backup";
+}
+
+<h2>Backup Created</h2>
+
+<p>A backup of your database has been created in the following directory...</p>
+
+<h3>C:\Users\Public\TOLDB_Backup</h3>
+
+<h4>If you would like to restore a backup</h4>
+    <ul>
+        <li>
+        !!DO NOT NAVIGATE FROM THIS PAGE WHILE RESTORING!!
+        </li>
+        <li>
+            Copy the .mdf file from the above directory you wish to backup
+        </li>
+        <li>
+            Place the copy inside of the following folder - C:\~\TreeOfLifeDB\App_Data
+        </li>
+        <li>
+            Delete the existing TOLDB.mdf file (this is your old database).
+        </li>
+        <li>
+            Rename your backup to TOLDB.mdf
+        </li>
+        <li>
+            NOW you can navigate away from this page!
+        </li>
+    </ul>
+

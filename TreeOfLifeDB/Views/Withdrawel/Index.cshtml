@@ -6,16 +6,22 @@
 
 <h2>Index</h2>
 
+<div class="row">
+    <div class="col-md-2">
+        <p><a class="btn btn-primary btn-large" href="~/Cause/Create">New Cause &raquo;</a></p>
+    </div>
+</div>
+
 @using (Html.BeginForm())
 {
     <p>
-        Search Withdrawels: @Html.TextBox("SearchString")
+        Search Withdrawals: @Html.TextBox("SearchString")
         <input class="btn-primary" type="submit" value="Search" />
     </p>
 }
 
 <p>
-    @Html.ActionLink("Create New Withdrawel", "Create")
+    @Html.ActionLink("Create New Withdrawal", "Create")
 </p>
 <table class="table">
     <tr>

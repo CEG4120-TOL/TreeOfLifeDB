@@ -66,12 +66,13 @@ namespace TreeOfLifeDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="TransactionID,Date,Amount,Notes,causeID")] Withdrawel withdrawel)
         {
+            
             if (ModelState.IsValid)
-            {
-
+            { 
                 var causeName = (from g in db.Causes where g.TolAccountID == withdrawel.causeID select g).First();
                 withdrawel.cause = causeName;
                 causeName.Balance -= withdrawel.Amount;
+                withdrawel.Date = DateTime.Now;
 
                 db.Transactions.Add(withdrawel);
                 db.SaveChanges();
