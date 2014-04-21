@@ -35,18 +35,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Notes)
+                @Html.TextAreaFor(model => model.Notes)
                 @Html.ValidationMessageFor(model => model.Notes)
             </div>
         </div>
-
-        <!--<div class="form-group">
-            @Html.LabelFor(model => model.Balance, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Balance)
-                @Html.ValidationMessageFor(model => model.Balance)
-            </div>
-        </div>-->
 
         <div class="form-group">
             @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
@@ -67,7 +59,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Zip, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Zip)
+                @Html.TextBoxFor(model => model.Zip, new { placeholder = "5 Digit", onkeyup = "$('#Zip').mask('00000');" })
                 @Html.ValidationMessageFor(model => model.Zip)
             </div>
         </div>
@@ -83,7 +75,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.State, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.State)
+                @Html.TextBoxFor(model => model.State, new { placeholder = "OH", onkeyup = "$('#State').mask('SS');" })
                 @Html.ValidationMessageFor(model => model.State)
             </div>
         </div>
@@ -91,7 +83,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone)
+                @Html.TextBoxFor(model => model.Phone, new { placeholder = "(555) 555-5555", onkeyup = "$('#Phone').mask('(000) 000-0000');" })
                 @Html.ValidationMessageFor(model => model.Phone)
             </div>
         </div>

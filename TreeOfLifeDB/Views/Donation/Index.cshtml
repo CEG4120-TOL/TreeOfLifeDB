@@ -6,17 +6,25 @@
 
 <h2>Donations</h2>
 
-<p>
-    @Html.ActionLink("Create New Donation", "Create")
-</p>
-
 @using (Html.BeginForm())
 {
-    <p>
-        Search Donations: @Html.TextBox("SearchString")
-        <input class="btn-primary" type="submit" value="Search" />
-    </p>
+    <div class="row">
+
+        <div class="form-inline">
+            <p>
+                Search Donations: @Html.TextBox("SearchString")
+                <input class="btn-primary" type="submit" value="Search" />
+                <a class="btn btn-sm" href="~/Donation/Index">View All &raquo;</a>
+            </p>
+        </div>
+    </div>
 }
+
+<h2>
+    @Html.ActionLink("Create New Donation", "Create")
+</h2>
+
+
 
 <table class="table">
     <tr>      

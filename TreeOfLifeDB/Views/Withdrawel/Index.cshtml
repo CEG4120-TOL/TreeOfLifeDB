@@ -14,15 +14,21 @@
 
 @using (Html.BeginForm())
 {
-    <p>
-        Search Withdrawals: @Html.TextBox("SearchString")
-        <input class="btn-primary" type="submit" value="Search" />
-    </p>
+    <div class="row">
+
+        <div class="form-inline">
+            <p>
+                Search Events: @Html.TextBox("SearchString")
+                <input class="btn-primary" type="submit" value="Search" />
+                <a class="btn btn-sm" href="~/Withdrawel/Index">View All &raquo;</a>
+            </p>
+        </div>
+    </div>
 }
 
-<p>
+<h2>
     @Html.ActionLink("Create New Withdrawal", "Create")
-</p>
+</h2>
 <table class="table">
     <tr>
         <th>
@@ -34,11 +40,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Notes)
         </th>
-        <td>
-            <strong>Cause</strong>
-        </td>
         <th>
-            ID
+            Cause
+        </th>
+        <th>
+            Cause ID
         </th>
         <th></th>
     </tr>
@@ -49,7 +55,7 @@
             @Html.DisplayFor(modelItem => item.Date, "{0:MM/dd/yyyy}")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Amount)
+            $@Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Notes)

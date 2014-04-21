@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Amount, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Amount)
+                @Html.EditorFor(model => model.Amount, new { placeholder = "$0.00", onkeyup = "$('#Amount').priceFormat({prefix:''});" })
                 @Html.ValidationMessageFor(model => model.Amount)
             </div>
         </div>
@@ -68,16 +68,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TaxDeductableAmount, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TaxDeductableAmount)
+                @Html.TextBoxFor(model => model.TaxDeductableAmount, new { placeholder = "0.00", onkeyup = "$('#TaxDeductableAmount').priceFormat({prefix:'', thousandsSeparator:''});" })
                 @Html.ValidationMessageFor(model => model.TaxDeductableAmount)
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
     </div>
 }
 

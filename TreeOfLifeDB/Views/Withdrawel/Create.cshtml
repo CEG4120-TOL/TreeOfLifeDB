@@ -12,17 +12,9 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Withdrawel</h4>
+        <h4>Withdrawal</h4>
         <hr />
         @Html.ValidationSummary(true)
-
-        <!--<div class="form-group">
-            @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date)
-                @Html.ValidationMessageFor(model => model.Date)
-            </div>
-        </div>-->
 
         <div class="form-group">
             @Html.LabelFor(model => model.Amount, new { @class = "control-label col-md-2" })
@@ -35,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Notes)
+                @Html.TextAreaFor(model => model.Notes)
                 @Html.ValidationMessageFor(model => model.Notes)
             </div>
         </div>

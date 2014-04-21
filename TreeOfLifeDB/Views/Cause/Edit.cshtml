@@ -36,24 +36,25 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Notes)
+                @Html.TextAreaFor(model => model.Notes)
                 @Html.ValidationMessageFor(model => model.Notes)
             </div>
         </div>
 
-        <!--<div class="form-group">
-            @Html.LabelFor(model => model.Balance, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Balance)
-                @Html.ValidationMessageFor(model => model.Balance)
-            </div>
-        </div>-->
 
         <div class="form-group">
             @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Description)
                 @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Balance, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Balance, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Balance)
             </div>
         </div>
 

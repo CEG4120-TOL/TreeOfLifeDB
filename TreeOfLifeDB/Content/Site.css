@@ -49,3 +49,14 @@ input[type="checkbox"].input-validation-error {
 #tolLogo{
     float:right;
 }
+
+#Notes{
+    min-height:200px;
+    width:300px;
+    max-width:300px;
+}
+
+dl{
+    padding: 10px;
+    width:300px;
+}

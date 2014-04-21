@@ -13,16 +13,22 @@
 
 @using (Html.BeginForm())
 {
-    <p>
-        Search Donors: @Html.TextBox("SearchString")
-        <input class="btn-primary" type="submit" value="Search" />
-    </p>
+    <div class="row">
+
+        <div class="form-inline">
+            <p>
+                Search Donors: @Html.TextBox("SearchString")
+                <input class="btn-primary" type="submit" value="Search" />
+                <a class="btn btn-sm" href="~/Donor/Index">View All &raquo;</a>
+            </p>
+        </div>
+    </div>
 }
 
 
-<p>
+<h2>
     @Html.ActionLink("Create New Donor", "Create")
-</p>
+</h2>
 <table class="table">
     <tr>
         <th>
@@ -58,7 +64,7 @@
             @Html.DisplayFor(modelItem => item.TolAccountID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Balance)
+            $@Html.DisplayFor(modelItem => item.Balance)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)

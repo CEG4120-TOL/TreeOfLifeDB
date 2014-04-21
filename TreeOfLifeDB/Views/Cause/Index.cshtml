@@ -11,21 +11,27 @@
         <p><a class="btn btn-primary btn-large" href="~/Donation/Create">New Donation &raquo;</a></p>
     </div>
     <div class="col-md-2">
-        <p><a class="btn btn-primary btn-large" href="~/Withdrawel/Create">New Withdrawel &raquo;</a></p>
+        <p><a class="btn btn-primary btn-large" href="~/Withdrawel/Create">New Withdrawal &raquo;</a></p>
     </div>
 </div>
 
 @using (Html.BeginForm())
 {
-    <p>
-        Search Causes: @Html.TextBox("SearchString")
-        <input class="btn-primary" type="submit" value="Search" />
-    </p>
+    <div class="row">
+
+        <div class="form-inline" >
+            <p>
+                Search Causes: @Html.TextBox("SearchString")
+                <input class="btn-primary" type="submit" value="Search" />
+                <a class="btn btn-sm" href="~/Cause/Index">View All &raquo;</a>
+            </p>
+        </div>
+        </div>
 }
 
-<p>
+<h2>
     @Html.ActionLink("Create New Cause", "Create")
-</p>
+</h2>
 <table class="table">
     <tr>
         <th>
@@ -47,7 +53,7 @@
             Total Donations
         </th>
         <th>
-            Withdrawels
+            Withdrawals
         </th>
         <th></th>
     </tr>

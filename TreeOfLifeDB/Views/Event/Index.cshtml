@@ -14,16 +14,22 @@
 
 @using (Html.BeginForm())
 {
-    <p>
-        Search Events: @Html.TextBox("SearchString")
-        <input class="btn-primary" type="submit" value="Search" />
-    </p>
+    <div class="row">
+
+        <div class="form-inline">
+            <p>
+                Search Events: @Html.TextBox("SearchString")
+                <input class="btn-primary" type="submit" value="Search" />
+                <a class="btn btn-sm" href="~/Event/Index">View All &raquo;</a>
+            </p>
+        </div>
+    </div>
 }
 
 
-<p>
+<h2>
     @Html.ActionLink("Create New Event", "Create")
-</p>
+</h2>
 <table class="table">
     <tr>
         <th>
@@ -62,7 +68,7 @@
             @Html.DisplayFor(modelItem => item.TolAccountID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Balance)
+            $@Html.DisplayFor(modelItem => item.Balance)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date, "{0:MM/dd/yyyy}")
